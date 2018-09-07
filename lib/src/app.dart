@@ -48,10 +48,14 @@ class App extends StatefulWidget{
 }
 
 // WidgetState Class
+// State<TYPE> // Generic
 class AppState extends State<App>{
   // define build that returns widget
   // that this widget shows
   int counter = 0;
+  void fetchImage(){
+    
+  }
 
 
   Widget build(context){
@@ -66,12 +70,13 @@ class AppState extends State<App>{
           floatingActionButton: FloatingActionButton(
             //  child:Text('+'),
               child:Icon(Icons.add),
-              onPressed: (){
+              onPressed: fetchImage,
+              /*onPressed: (){
                 setState((){
                     counter++;
                     print('hmmm sexy $counter');
                 });
-              }
+              }*/
           ),
         )
     );
