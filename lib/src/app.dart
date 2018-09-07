@@ -1,6 +1,10 @@
-// Import flutter library
-
+// Import Dependencies flutter library
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' show get; // Only import the get function
+import 'dart:convert';
+// Import Developer Libraries
+import 'models/image_model.dart';
+import 'widgets/image_list.dart';
 
 // Create class fro custom widget
 // Extend stateless widgets
@@ -53,8 +57,16 @@ class AppState extends State<App>{
   // define build that returns widget
   // that this widget shows
   int counter = 0;
-  void fetchImage(){
-    
+  List<ImageModel> images = [];
+  void fetchImage() async {
+    counter++;
+    final response = await get('https://jsonplaceholder.typicode.com/photos/$counter');
+    final imageModel = ImageModel.fromJson(json.decode(response.body));
+
+    setState(() {
+      images.add(imageModel);
+
+    });
   }
 
 
@@ -66,7 +78,7 @@ class AppState extends State<App>{
                 "Let's see some Images!!"
             ),
           ),
-          body: Text('Images $counter'),
+          body: new ImageList(images),
           floatingActionButton: FloatingActionButton(
             //  child:Text('+'),
               child:Icon(Icons.add),
