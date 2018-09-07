@@ -1,28 +1,17 @@
 // import helper library
 // from flutter to get content on the screen
-
+// Dependencies Libraries
 import 'package:flutter/material.dart';
+
+// Developer Libraries
+import 'src/app.dart';
 
 
 // define main function to run app
 void main(){
   // create text widget to get text on screen
-  var app = MaterialApp(
-    home:Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Let's see some Images!!"
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-          onPressed: (){
-            print('hmmm sexy');
-          }
-       ),
-    )
-  );
   // take widget and get it on the device
-  runApp(app);
+  runApp(App());
 }
 // Scaffold -- App bar + floating action button
 
